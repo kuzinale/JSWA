@@ -11,6 +11,9 @@ import java.util.ArrayList;
  * 3. Все данные сохраняются в структуры, надо подумать сколько и какие.
  */
 public class S7DataCollector {
+
+
+
     public static void main(String[] args) {
         ArrayList<Integer> intValues = new ArrayList<>();
         ArrayList<Integer> intValues2 = new ArrayList<>();
