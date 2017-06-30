@@ -1,25 +1,56 @@
 package s7data;
 
 import libnodave.Nodave;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 /**
  * Created by kuzin.al on 30.06.2017.
  * Данный выполняет след. функции:
  * 1. Коннектится ко всем PLC
  * 2. Читает данные в несколько потоков, количество потоков = количеству PLC
  * 3. Все данные сохраняются в структуры, надо подумать сколько и какие.
+ * Надо сделать так, чтобы данные с каждого PLC сохранялись в массив байтов и позже придумать механизм, который будет
+ * эту структуру интрепретировать.
  */
 public class S7DataCollector {
+    private String adres="";
+    private String customer="";
+    private  ByteBuffer data = ByteBuffer.allocate(250);
 
+    public S7DataCollector(String adres)
+    {
+        this.adres = adres;
+        this.customer = "undefined customer";
+    }
 
+    public S7DataCollector(String adres, String customer)
+    {
+        this.adres = adres;
+        this.customer = customer;
+    }
+
+    public String getAdres() {
+        return adres;
+    }
+
+    public void setAdres(String adres) {
+        this.adres = adres;
+    }
+
+    public int getInt(ByteBuffer data, int position)
+    {
+        data.position(position);
+        return data.getInt();
+    }
 
     public static void main(String[] args) {
         ArrayList<Integer> intValues = new ArrayList<>();
         ArrayList<Integer> intValues2 = new ArrayList<>();
         ArrayList<Float>   floatValues = new ArrayList<>();
         ArrayList<Integer> byteValues = new ArrayList<>();
-        DataIsoTCP.Start("192.168.0.40");
+        DataIsoTCP.Start("192.168.0.10");
 
         DataIsoTCP.readIntegers(Nodave.DB,250,0,102);
 
