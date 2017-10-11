@@ -6,7 +6,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 /**
- * @author v.chibrikov
+ * @author a.kuzin
  */
 public class Main {
     public static void main(String[] args) throws Exception {

@@ -1,7 +1,9 @@
-import org.libnodave.Nodave;
-import org.tags.DataIsoTCP;
+package S7Examples;
 
+import libnodave.Nodave;
+import s7data.DataIsoTCP;
 import java.util.ArrayList;
+
 
 /**
  * Created by kuzin.al on 05.12.2016.
@@ -14,8 +16,7 @@ public class Main
         ArrayList<Float>   floatValues = new ArrayList<>();
         ArrayList<Integer> byteValues = new ArrayList<>();
         DataIsoTCP.Start("192.168.0.40");
-
-        org.tags.DataIsoTCP.readIntegers(Nodave.DB,250,0,102);
+        DataIsoTCP.readIntegers(Nodave.DB,250,0,102);
 
 
 
